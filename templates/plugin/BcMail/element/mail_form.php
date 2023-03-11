@@ -43,13 +43,17 @@ $this->BcBaser->js('BcMail.form-submit', true, ['defer'])
 	<?php $this->BcBaser->element('mail_input', ['blockStart' => 1]) ?>
 </table>
 
+<?php if ($mailContent->auth_captcha): ?>
+	<?php $this->Mailform->authCaptcha('auth_captcha', ['helper' => $this->BcBaser]) ?>
+<?php endif ?>
+
 <div class="bs-mail-form-submit">
 	<?php if ($freezed): ?>
-		<?php echo $this->Mailform->submit('　' . __('書き直す') . '　', ['div' => false, 'class' => 'form-submit', 'id' => 'BtnMessageBack']) ?>
-		<?php echo $this->Mailform->submit('　' . __('送信する') . '　', ['div' => false, 'class' => 'form-submit', 'id' => 'BtnMessageSubmit']) ?>
+		<?php echo $this->Mailform->submit('　' . __d('baser_core', '書き直す') . '　', ['div' => false, 'class' => 'form-submit', 'id' => 'BtnMessageBack']) ?>
+		<?php echo $this->Mailform->submit('　' . __d('baser_core', '送信する') . '　', ['div' => false, 'class' => 'form-submit', 'id' => 'BtnMessageSubmit']) ?>
 	<?php else: ?>
 		<input name="resetdata" value="　取り消す　" type="reset" />
-		<?php echo $this->Mailform->submit('　' . __('入力内容を確認する') . '　', ['div' => false, 'class' => 'form-submit', 'id' => 'BtnMessageConfirm']) ?>
+		<?php echo $this->Mailform->submit('　' . __d('baser_core', '入力内容を確認する') . '　', ['div' => false, 'class' => 'form-submit', 'id' => 'BtnMessageConfirm']) ?>
 	<?php endif; ?>
 </div>
 
