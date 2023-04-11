@@ -1,4 +1,4 @@
-@charset "utf-8";
+<?php
 /**
  * baserCMS :  Based Website Development Project <https://basercms.net>
  * Copyright (c) NPO baser foundation <https://baserfoundation.org/>
@@ -10,11 +10,15 @@
  */
 
 /**
- * バーガーエディタースタイル
- * 管理画面でも呼び出される
+ * RSSレイアウト
+ * @var \BcBlog\View\BlogFrontAppView $this
  */
 
-@import "common/editor";
-@import "common/bge_setting";
-@import "common/bge";
+if (!isset($channel)) $channel = [];
+if (!isset($channel['title'])) $channel['title'] = $this->fetch('title');
 
+echo $this->Rss->document(
+  $this->Rss->channel(
+    [], $channel, $this->fetch('content')
+  )
+);

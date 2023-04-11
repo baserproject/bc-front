@@ -10,26 +10,21 @@
  */
 
 /**
- * コンテンツフォルダ
+ * ブログ記事コンテンツ
+ *
+ * BlogHelper::postContent より呼び出される
  *
  * @var \BaserCore\View\BcFrontAppView $this
- * @var array $children 子コンテンツ
+ * @var bool $useContent
+ * @var bool $moreText
+ * @var \BcBlog\Model\Entity\BlogPost $post
  */
 ?>
 
 
-<h2 class="bs-contents-title"><?php $this->BcBaser->contentsTitle(); ?></h2>
-
-<?php if($children): ?>
-<ul class="bs-contents-list">
-	<?php foreach($children as $child): ?>
-	<li class="bs-contents-list__item">
-		<?php $this->BcBaser->link(
-			$child->title,
-			$child->url,
-			['class' => 'bs-contents-list__item-title']
-		) ?>
-	</li>
-	<?php endforeach ?>
-</ul>
+<?php if($useContent): ?>
+<div class="post-body"><?php echo $post->content ?></div>
+<?php endif ?>
+<?php if ($moreText && $post->detail): ?>
+<div id="post-detail"><?php echo $post->detail ?></div>
 <?php endif ?>

@@ -12,17 +12,20 @@
 /**
  * フラッシュメッセージ
  *
+ * BcBaserHelper::flash() より呼び出される
  * @var \BaserCore\View\BcFrontAppView $this
+ * @var array $sessionMessageList
  * @var string $key
- * @var string $message
  */
-$class = 'message';
-if (!empty($params['class'])) {
-  $class .= ' ' . $params['class'];
-}
 ?>
 
 
-<div id="<?php echo h($key) ?>Message" class="<?php echo h($class) ?>">
-  <?php echo str_replace("\n", '<br>', h($message)) ?>
+<div id="MessageBox" class="message-box">
+  <?php
+  foreach($sessionMessageList as $messageKey => $sessionMessage) {
+    if ($key === $messageKey && $this->getRequest()->getSession()->check('Flash.' . $messageKey)) {
+      echo $this->Flash->render($messageKey, ['escape' => false]);
+    }
+  }
+  ?>
 </div>

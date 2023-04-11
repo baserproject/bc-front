@@ -10,19 +10,20 @@
  */
 
 /**
- * コンテンツナビ
+ * ブログ記事コンテンツ
  *
- * 呼出箇所：固定ページ
- * BcBaserHelper::contentsNavi() で呼び出す
- * （例）<?php $this->BcBaser->contentsNavi() ?>
+ * BlogHelper::postContent より呼び出される
  *
  * @var \BaserCore\View\BcFrontAppView $this
+ * @var string $moreLink
+ * @var \BcBlog\Model\Entity\BlogPost $post
  */
 ?>
 
 
-<?php if(!$this->BcBaser->isHome() && $this->BcBaser->isPage()): ?>
-	<div class="bs-contents-navi">
-		<?php $this->BcContents->prevLink() ?><?php $this->BcContents->nextLink() ?>
-	</div>
-<?php endif ?>
+<p class="more">
+<?php echo $this->Html->link(
+    $moreLink,
+    $this->Blog->getContentsUrl($post->blog_content_id, false) . 'archives/' . $post->no . '#post-detail'
+) ?>
+</p>

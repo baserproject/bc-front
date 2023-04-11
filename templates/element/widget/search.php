@@ -1,23 +1,24 @@
 <?php
 /**
  * baserCMS :  Based Website Development Project <https://basercms.net>
- * Copyright (c) baserCMS Users Community <https://basercms.net/community/>
+ * Copyright (c) NPO baser foundation <https://baserfoundation.org/>
  *
- * @copyright       Copyright (c) baserCMS Users Community
- * @link            https://basercms.net baserCMS Project
- * @since           baserCMS v 4.4.0
- * @license         https://basercms.net/license/index.html
+ * @copyright     Copyright (c) NPO baser foundation
+ * @link          https://basercms.net baserCMS Project
+ * @since         5.0.0
+ * @license       https://basercms.net/license/index.html MIT License
  */
 
 /**
  * サイト検索フォーム
- * 呼出箇所：ウィジェット
  *
+ * 呼出箇所：ウィジェット
  * $this->BcBaser->widgetArea('ウィジェットエリアNO') で呼び出す
  * 管理画面で設定されたウィジェットエリアNOは、 $widgetArea で参照できる
  *
  * @var \BaserCore\View\BcFrontAppView $this
  * @var int $id ウィジェットID
+ * @var string $name
  */
 
 if ($this->getRequest()->is('maintenance')) return;
@@ -36,7 +37,7 @@ if(empty($searchIndexesFront)) $searchIndexesFront = null;
 
 
 <div class="bs-widget bs-widget-search-box bs-widget-search-box-<?php echo $id ?>">
-    <h2 class="bs-widget-head"><?php echo __d('baser_core', 'サイト内検索') ?></h2>
+    <h2 class="bs-widget-head"><?php echo $name ?></h2>
     <div class="bs-widget-form">
         <?php echo $this->BcForm->create($searchIndexesFront, ['type' => 'get', 'url' => $url]) ?>
         <?php if ($folders): ?>
