@@ -17,4 +17,4 @@ use BaserCore\BcPlugin;
 /**
  * plugin for BcFront
  */
-class BcFrontPlugin extends BcPlugin{}
+class Plugin extends BcPlugin{}
