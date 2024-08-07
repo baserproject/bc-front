@@ -47,7 +47,7 @@ $baseCurrentUrl = $this->BcBaser->getBlogContentsUrl($id) . 'archives/author/';
 			<?php foreach ($authors as $author): ?>
 				<?php
 				$class = ['bs-widget-list__item'];
-				if ($this->getRequest()->getPath() === $baseCurrentUrl . $author->id) {
+				if ($this->getRequest()->getPath() === $baseCurrentUrl . $author->name) {
 					$class[] = 'current';
 				}
 				if ($view_count) {
@@ -57,10 +57,14 @@ $baseCurrentUrl = $this->BcBaser->getBlogContentsUrl($id) . 'archives/author/';
 				}
 				?>
 				<li class="<?php echo implode(' ', $class) ?>">
-          <?php $this->BcBaser->link($title, $baseCurrentUrl . $author->id, [
-            'escape' => true,
-            'class' => 'bs-widget-list__item-title'
-          ]) ?>
+				  <?php if($author->name): ?>
+            <?php $this->BcBaser->link($title, $baseCurrentUrl . $author->name, [
+              'escape' => true,
+              'class' => 'bs-widget-list__item-title'
+            ]) ?>
+          <?php else: ?>
+            <?php echo $title ?>
+          <?php endif ?>
 				</li>
 			<?php endforeach; ?>
 		</ul>
