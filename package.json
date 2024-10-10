@@ -6,12 +6,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/baserproject/basercms.git"
+    "url": "git+https://github.com/baserproject/ucmitz.git"
   },
   "bugs": {
-    "url": "https://github.com/baserproject/basercms/issues"
+    "url": "https://github.com/baserproject/ucmitz/issues"
   },
-  "homepage": "https://github.com/baserproject/basercms#readme",
+  "homepage": "https://github.com/baserproject/ucmitz#readme",
   "scripts": {
     "dev": "gulp"
   },
