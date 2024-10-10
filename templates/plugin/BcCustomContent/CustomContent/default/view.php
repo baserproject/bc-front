@@ -35,7 +35,7 @@ $customLinks = $this->BcBaser->getCustomLinks($customContent->custom_table_id);
     公開日：<?php $this->BcBaser->customEntryPublished($customEntry) ?>
   </span>
 
-  <?php if (!empty($customLinks) && $customLinks->count()): ?>
+  <?php if ($customLinks->count()): ?>
     <table>
       <?php foreach($customLinks as $customLink):
         if (!$this->BcBaser->isDisplayCustomField($customEntry, $customLink->name)) continue;
