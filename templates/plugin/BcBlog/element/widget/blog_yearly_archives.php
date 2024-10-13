@@ -30,13 +30,13 @@ if (isset($blogContent)) {
 $data = $this->Blog->getViewVarsForBlogYearlyArchivesWidget($id, $limit, $view_count);
 $postedDates = $data['postedDates'];
 $blogcontent = $data['blogContent'];
-$baseCurrentUrl = $this->BcBaser->getBlogContentsUrl($id) . 'archives/date/';
+$baseCurrentUrl = $this->BcBaser->getBlogContentsUrl($id, false) . 'archives/date/';
 ?>
 
 
-<div class="bs-widget bs-widget-blog-yearly-archives bs-widget-blog-yearly-archives-<?php echo $id ?> bs-blog-widget">
+<div class="bs-widget bs-widget-blog-yearly-archives bs-widget-blog-yearly-archives-<?php echo h($id) ?> bs-blog-widget">
 	<?php if ($name && $use_title): ?>
-		<h2 class="bs-widget-head"><?php echo $name ?></h2>
+		<h2 class="bs-widget-head"><?php echo h($name) ?></h2>
 	<?php endif ?>
 	<?php if (!empty($postedDates)): ?>
 		<ul class="bs-widget-list">
@@ -55,7 +55,7 @@ $baseCurrentUrl = $this->BcBaser->getBlogContentsUrl($id) . 'archives/date/';
 				}
 				?>
 				<li class="<?php echo implode(' ', $class) ?>">
-					<?php $this->BcBaser->link($title, $this->BcBaser->getBlogContentsUrl($id) . 'archives/date/' . $postedDate['year']) ?>
+					<?php $this->BcBaser->link($title, $this->BcBaser->getBlogContentsUrl($id, false) . 'archives/date/' . $postedDate['year']) ?>
 				</li>
 			<?php endforeach; ?>
 		</ul>

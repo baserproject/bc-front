@@ -36,8 +36,8 @@ if(empty($searchIndexesFront)) $searchIndexesFront = null;
 ?>
 
 
-<div class="bs-widget bs-widget-search-box bs-widget-search-box-<?php echo $id ?>">
-    <h2 class="bs-widget-head"><?php echo $name ?></h2>
+<div class="bs-widget bs-widget-search-box bs-widget-search-box-<?php echo h($id) ?>">
+    <h2 class="bs-widget-head"><?php echo h($name) ?></h2>
     <div class="bs-widget-form">
         <?php echo $this->BcForm->create($searchIndexesFront, ['type' => 'get', 'url' => $url]) ?>
         <?php if ($folders): ?>
@@ -45,7 +45,7 @@ if(empty($searchIndexesFront)) $searchIndexesFront = null;
             <?php echo $this->BcForm->control('f', ['type' => 'select', 'options' => $folders, 'empty' => __d('baser_core', '指定しない')]) ?>
             <br>
         <?php endif ?>
-        <?php echo $this->BcForm->control('q', ['placeholder' => __d('baser_core', 'キーワード'), 'escape' => false]) ?>
+        <?php echo $this->BcForm->control('q', ['placeholder' => __d('baser_core', 'キーワード')]) ?>
         <?php echo $this->BcForm->control('s', ['type' => 'hidden', 'value' => $siteId]) ?>
         <?php echo $this->BcForm->submit(__d('baser_core', '検索'), ['div' => false, 'class' => 'bs-button-small']) ?>
         <?php echo $this->BcForm->end() ?>
