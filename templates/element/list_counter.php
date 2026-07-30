@@ -29,7 +29,6 @@
           '<strong>{{start}}</strong>',
           '<strong>{{end}}</strong>',
           '{{count}}'
-        )
       ) ?>
   </div>
 <?php endif ?>
